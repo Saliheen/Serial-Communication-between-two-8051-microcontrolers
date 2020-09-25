@@ -1,0 +1,79 @@
+C51 COMPILER V9.60.0.0   MAINCODEFILE                                                      09/15/2020 05:16:55 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAINCODEFILE
+OBJECT MODULE PLACED IN .\Objects\maincodefile.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE maincodefile.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listi
+                    -ngs\maincodefile.lst) TABS(3) OBJECT(.\Objects\maincodefile.obj)
+
+line level    source
+
+   1          
+   2          #include<reg51.h>
+   3          unsigned char ascii_values[4][4]={{52,53,67,87 },
+   4                                          {57,48,67,87},
+   5                                          {52,53,65,87 },
+   6                                          {57,48,67,87}};
+   7          int counter;
+   8          int i;
+   9          int j;
+  10          int k; 
+  11          int m;      
+  12          unsigned char ascii_code;                               
+  13          void delay(){
+  14   1      for(i=0;i<200;i++){
+  15   2      for(j=0; j<500; j++){
+  16   3      }
+  17   2      }
+  18   1      }        
+  19          
+  20          
+  21          void ser_init(){
+  22   1      
+  23   1         TMOD = 0x20;      /* Timer 1, 8-bit auto reload mode */
+  24   1         TH1 = 0xFD;    /* Load value for 9600 baud rate */
+  25   1         SCON = 0x50;      /* Mode 1, reception enable */
+  26   1         TR1 = 1;    /* Start timer 1 */
+  27   1      
+  28   1      }
+  29          void ser_txt(unsigned char value){
+  30   1      SBUF=value;
+  31   1         while(TI==0);
+  32   1         TI=0;
+  33   1      }
+  34          void main(){
+  35   1         ser_init();
+  36   1          while(1){
+  37   2             counter=0;
+  38   2          for(k=0; k<4; k++){
+  39   3          for(m=0; m<4; m++){
+  40   4             ascii_code=ascii_values[counter][m];
+  41   4           ser_txt(ascii_code);
+  42   4             delay();
+  43   4             delay();
+  44   4          }
+  45   3          counter++;
+  46   3          delay();
+  47   3          delay();
+  48   3          delay();
+  49   3          delay();
+  50   3          ser_txt(' ');
+  51   3          }
+  52   2          }
+  53   1      }
+
+C51 COMPILER V9.60.0.0   MAINCODEFILE                                                      09/15/2020 05:16:55 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    164    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     27    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

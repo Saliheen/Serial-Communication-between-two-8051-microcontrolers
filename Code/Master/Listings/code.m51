@@ -1,0 +1,175 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/15/2020  05:16:55  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\maincodefile.obj TO .\Objects\code PRINT (.\Listings\code.m
+>> 51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\maincodefile.obj (MAINCODEFILE)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\code (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     001BH     UNIT         ?DT?MAINCODEFILE
+            IDATA   0023H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0064H     UNIT         ?PR?MAIN?MAINCODEFILE
+            CODE    08F0H     002CH     UNIT         ?PR?DELAY?MAINCODEFILE
+            CODE    091CH     0013H     UNIT         ?C_INITSEG
+            CODE    092FH     000CH     UNIT         ?PR?SER_INIT?MAINCODEFILE
+            CODE    093BH     0008H     UNIT         ?PR?_SER_TXT?MAINCODEFILE
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\code (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAINCODEFILE
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAINCODEFILE
+  +--> ?PR?SER_INIT?MAINCODEFILE
+  +--> ?PR?_SER_TXT?MAINCODEFILE
+  +--> ?PR?DELAY?MAINCODEFILE
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\code (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/15/2020  05:16:55  PAGE 2
+
+
+
+  -------         MODULE        ?C_STARTUP
+  C:0800H         SEGMENT       ?C_C51STARTUP
+  I:0023H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0803H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0800H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0800H         LINE#         133
+  C:0802H         LINE#         134
+  C:0803H         LINE#         135
+  C:0804H         LINE#         136
+  C:0806H         LINE#         185
+  C:0809H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAINCODEFILE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0008H         PUBLIC        ascii_values
+  D:0018H         PUBLIC        counter
+  D:001AH         PUBLIC        ascii_code
+  C:093BH         PUBLIC        _ser_txt
+  C:08F3H         PUBLIC        delay
+  B:0098H.1       PUBLIC        TI
+  C:088CH         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:008DH         PUBLIC        TH1
+  B:0088H.6       PUBLIC        TR1
+  C:092FH         PUBLIC        ser_init
+  D:001BH         PUBLIC        i
+  D:001DH         PUBLIC        j
+  D:001FH         PUBLIC        k
+  D:0021H         PUBLIC        m
+  -------         PROC          L?0027
+  -------         ENDPROC       L?0027
+  -------         PROC          DELAY
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/15/2020  05:16:55  PAGE 3
+
+
+  C:08F3H         LINE#         13
+  C:08F3H         LINE#         14
+  C:08F8H         LINE#         15
+  C:08FDH         LINE#         16
+  C:090DH         LINE#         17
+  C:091BH         LINE#         18
+  -------         ENDPROC       DELAY
+  -------         PROC          SER_INIT
+  C:092FH         LINE#         21
+  C:092FH         LINE#         23
+  C:0932H         LINE#         24
+  C:0935H         LINE#         25
+  C:0938H         LINE#         26
+  C:093AH         LINE#         28
+  -------         ENDPROC       SER_INIT
+  -------         PROC          _SER_TXT
+  D:0007H         SYMBOL        value
+  C:093BH         LINE#         29
+  C:093BH         LINE#         30
+  C:093DH         LINE#         31
+  C:0940H         LINE#         32
+  C:0942H         LINE#         33
+  -------         ENDPROC       _SER_TXT
+  -------         PROC          MAIN
+  C:088CH         LINE#         34
+  C:088CH         LINE#         35
+  C:088FH         LINE#         36
+  C:088FH         LINE#         37
+  C:0894H         LINE#         38
+  C:0898H         LINE#         39
+  C:089DH         LINE#         40
+  C:08ABH         LINE#         41
+  C:08AFH         LINE#         42
+  C:08AFH         LINE#         43
+  C:08B2H         LINE#         44
+  C:08C5H         LINE#         45
+  C:08CDH         LINE#         46
+  C:08CDH         LINE#         47
+  C:08D0H         LINE#         48
+  C:08D3H         LINE#         49
+  C:08D6H         LINE#         50
+  C:08DBH         LINE#         51
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAINCODEFILE
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00C5H BYTE ( 9%) *
+******************************************************************************
+
+Program Size: data=36.0 xdata=0 code=326
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
